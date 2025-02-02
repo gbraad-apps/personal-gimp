@@ -6,13 +6,13 @@ FROM ${BASE_IMAGE}:${BASE_VERSION}
 USER root
 
 RUN dnf install -y \
-	<replace> \
+        gimp \
     && dnf clean all \
     && rm -rf /var/cache/yum \
     && git config -f /etc/rdesktop/rdesktop.ini \
-	rdesktop.title "" \
+        rdesktop.title "Personal Gimp" \
     && git config -f /etc/rdesktop/rdesktop.ini \
-	rdesktop.exec ""
+        rdesktop.exec "gimp"
 
 # ensure to become root for systemd
 #ENTRYPOINT ["/sbin/init"]
